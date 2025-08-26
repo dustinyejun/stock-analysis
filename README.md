@@ -1,6 +1,11 @@
-# A股选股系统
+# 🎯 A股智能选股系统
 
-一个基于技术分析的智能A股选股系统，支持多种选股策略和实时股票扫描。
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.48.1-red.svg)](https://streamlit.io/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
+
+> 专业的A股股票筛选工具，基于技术分析和量化策略，帮助投资者快速发现优质投资标的。**支持打包为独立EXE文件，无需Python环境即可运行！**
 
 ## 🎯 系统特性
 
@@ -19,33 +24,63 @@
 - **计算**: 向量化技术指标计算，24种专业指标
 - **架构**: 面向对象设计，模块化架构，生产级代码质量
 
-## 📦 安装依赖
+## 🚀 快速开始
+
+### 方法1: 使用EXE文件 (推荐) 🎯
+
+**无需安装Python环境，双击即可使用！**
+
+1. **下载EXE程序**
+   ```
+   从GitHub Releases下载 A股选股系统.exe
+   或在Windows电脑上使用build_exe.bat打包生成
+   ```
+
+2. **运行程序**
+   ```
+   双击 A股选股系统.exe
+   等待5-15秒启动(首次启动需要解压)
+   程序会自动在浏览器中打开界面
+   ```
+
+3. **开始选股**
+   - 在左侧配置扫描板块和选股规则
+   - 点击"🚀 开始选股扫描"按钮
+   - 查看实时扫描进度和结果展示
+
+### 方法2: 源码运行 (开发者)
 
 ```bash
-# 创建虚拟环境
+# 1. 克隆项目
+git clone https://github.com/dustinyejun/stock-analysis.git
+cd stock-analysis
+
+# 2. 创建虚拟环境
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
 # venv\Scripts\activate   # Windows
 
-# 安装依赖
+# 3. 安装依赖
 pip install -r requirements.txt
-```
 
-## 🚀 快速开始
-
-### 1. 启动Web界面
-```bash
+# 4. 启动应用
 streamlit run app.py
 ```
 
-### 2. 访问应用
-打开浏览器访问：`http://localhost:8501`
+### 方法3: Windows下EXE打包
 
-### 3. 使用步骤
-1. 在左侧配置面板设置扫描参数
-2. 选择需要的选股规则
-3. 点击"开始扫描"执行股票筛选
-4. 查看详细的扫描结果和分析
+```bash
+# 在Windows 10/11 x86_64环境下
+# 1. 一键打包(推荐)
+build_exe.bat
+
+# 2. 手动打包
+pip install -r requirements.txt
+pyinstaller app.spec
+
+# 3. 获取EXE文件
+# 生成的文件: dist/A股选股系统.exe
+```
 
 ## 📊 支持的选股策略
 
@@ -214,6 +249,26 @@ streamlit run app.py
 - 提交 Issue: [GitHub Issues](https://github.com/yourname/stock-analysis/issues)
 - 邮件联系: your.email@example.com
 
+## 📦 EXE打包特性
+
+### 🎯 独立运行优势
+- ✅ **零环境依赖**: 无需安装Python、pip或任何依赖库
+- ✅ **一键启动**: 双击EXE文件即可使用，如同普通软件
+- ✅ **完整功能**: 包含所有选股功能，性能与源码版本一致
+- ✅ **用户友好**: 适合非技术人员使用，降低使用门槛
+
+### 💻 系统要求
+- **操作系统**: Windows 10/11 (64位)
+- **内存**: 4GB以上RAM
+- **网络**: 需要互联网连接获取股票数据
+- **硬盘**: 500MB可用空间
+
+### 📁 打包文档
+- [📖 用户使用手册](USER_MANUAL.md) - 详细操作指南
+- [⚙️ EXE打包说明](BUILD_INSTRUCTIONS.md) - Windows环境打包教程
+- [✅ 打包检查清单](PACKAGING_CHECKLIST.md) - 打包前完整检查
+
 ---
 
-**开发状态**: 活跃开发中 | **版本**: v1.0.0 | **最后更新**: 2024年8月26日
+**开发状态**: ✅ 已完成 | **版本**: v1.0.0 | **最后更新**: 2025年8月26日  
+**项目状态**: 🚀 生产就绪 | **EXE支持**: ✅ 完整配置 | **GitHub**: [github.com/dustinyejun/stock-analysis](https://github.com/dustinyejun/stock-analysis)
