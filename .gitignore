@@ -24,7 +24,8 @@ MANIFEST
 
 # PyInstaller
 *.manifest
-*.spec
+# *.spec  # 注释掉，我们需要包含app.spec用于EXE打包
+build.spec
 
 # Unit test / coverage reports
 htmlcov/
