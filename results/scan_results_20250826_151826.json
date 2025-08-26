@@ -1,0 +1,338 @@
+[
+  {
+    "symbol": "000003",
+    "stock_name": "股票000003",
+    "composite_score": 90.76242102446399,
+    "results": [
+      "SelectionResult(symbol='000003', rule_name='GoldenPit', result=<RuleResult.PASS: 'pass'>, score=np.float64(90.76242102446399), confidence=0.9, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.781578947368421), 'threshold': 0.2}, 'big_yang': {'met': np.True_, 'days': 1, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(2.71), 'ma_value': np.float64(2.195), 'margin': np.float64(0.23462414578587706)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(2.0609936819571195), 'threshold': 1.3}}, 'scores': {'drawdown_score': 100, 'big_yang_score': np.int64(75), 'ma_breakout_score': 100, 'volume_score': np.float64(88.04968409785597)}, 'final_score': np.float64(90.76242102446399), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 412503))",
+      "SelectionResult(symbol='000003', rule_name='TrendBreakout', result=<RuleResult.FAIL: 'fail'>, score=np.float64(41.452991452991455), confidence=0.55, details={'conditions': {'bullish_trend': {'met': np.False_, 'strength': np.float64(0.0), 'days': 0, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 1, 'required_days': 2, 'avg_volume_ratio': np.float64(2.0609936819571195), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(2.71), 'period_high': np.float64(7.6), 'breakout_strength': np.float64(-0.6434210526315789), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 3, 'total_days': 3, 'avg_daily_return': np.float64(0.05015004532871803), 'cumulative_return': np.float64(0.158119658119658), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(0.0), 'volume_score': 40, 'breakout_score': 0, 'price_trend_score': np.float64(85.8119658119658), 'rsi_bonus': 10}, 'base_score': np.float64(31.45299145299145), 'final_score': np.float64(41.452991452991455), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 413246))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 2.71,
+        "trigger_date": "2002-04-26",
+        "previous_high": 7.6,
+        "max_drawdown": "-64.3%",
+        "big_yang_gain": "5.0%",
+        "ma10": 2.19
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2000-05-19 to 2002-04-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 90.76242102446399,
+      "TrendBreakout": 41.452991452991455
+    }
+  },
+  {
+    "symbol": "000024",
+    "stock_name": "股票000024",
+    "composite_score": 84.41862756345462,
+    "results": [
+      "SelectionResult(symbol='000024', rule_name='GoldenPit', result=<RuleResult.FAIL: 'fail'>, score=np.float64(52.95239314573524), confidence=0.5, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.23960066555740434), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(40.5), 'ma_value': np.float64(36.827), 'margin': np.float64(0.099736606294295)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.3793691516634325), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(57.920133111480865), 'big_yang_score': 0, 'ma_breakout_score': np.float64(99.9209818882885), 'volume_score': np.float64(53.96845758317163)}, 'final_score': np.float64(52.95239314573524), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 955402))",
+      "SelectionResult(symbol='000024', rule_name='TrendBreakout', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(84.41862756345462), confidence=0.75, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.True_, 'days': 2, 'required_days': 2, 'avg_volume_ratio': np.float64(1.3793691516634325), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(40.5), 'period_high': np.float64(40.99), 'breakout_strength': np.float64(-0.011954135154915882), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 3, 'total_days': 3, 'avg_daily_return': np.float64(0.038867456898367424), 'cumulative_return': np.float64(0.12064194798007732), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': np.float64(71.58738303326865), 'breakout_score': np.float64(44.02293242254207), 'price_trend_score': np.float64(82.06419479800773), 'rsi_bonus': 10}, 'base_score': np.float64(74.41862756345462), 'final_score': np.float64(84.41862756345462), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 955704))"
+    ],
+    "rule_data": {
+      "TrendBreakout": {
+        "current_price": 40.5,
+        "trigger_date": "2015-12-07",
+        "previous_high": 39.63,
+        "breakout_margin": "+2.2%",
+        "volume_days": "3天",
+        "avg_volume_ratio": 1.33
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2014-05-27 to 2015-12-07",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 52.95239314573524,
+      "TrendBreakout": 84.41862756345462
+    }
+  },
+  {
+    "symbol": "000016",
+    "stock_name": "深康佳Ａ",
+    "composite_score": 81.51384966179234,
+    "results": [
+      "SelectionResult(symbol='000016', rule_name='GoldenPit', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(81.51384966179234), confidence=0.7, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.4418604651162791), 'threshold': 0.2}, 'big_yang': {'met': np.True_, 'days': 1, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(6.17), 'ma_value': np.float64(5.616999999999999), 'margin': np.float64(0.09845113049670659)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.3629593294980307), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(98.37209302325581), 'big_yang_score': np.int64(75), 'ma_breakout_score': np.float64(99.53533914901197), 'volume_score': np.float64(53.14796647490153)}, 'final_score': np.float64(81.51384966179234), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 769095))",
+      "SelectionResult(symbol='000016', rule_name='TrendBreakout', result=<RuleResult.FAIL: 'fail'>, score=np.float64(59.72998524257516), confidence=0.55, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 1, 'required_days': 2, 'avg_volume_ratio': np.float64(1.3629593294980307), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(6.17), 'period_high': np.float64(6.5), 'breakout_strength': np.float64(-0.05076923076923078), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 2, 'total_days': 3, 'avg_daily_return': np.float64(0.03629645303365151), 'cumulative_return': np.float64(0.10971223021582732), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': 40, 'breakout_score': np.float64(24.615384615384595), 'price_trend_score': np.float64(74.30455635491606), 'rsi_bonus': 0}, 'base_score': np.float64(59.72998524257516), 'final_score': np.float64(59.72998524257516), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 769690))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 6.17,
+        "trigger_date": "2025-08-26",
+        "previous_high": 6.5,
+        "max_drawdown": "-5.1%",
+        "big_yang_gain": "0.8%",
+        "ma10": 5.62
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-01 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 81.51384966179234,
+      "TrendBreakout": 59.72998524257516
+    }
+  },
+  {
+    "symbol": "000002",
+    "stock_name": "万  科Ａ",
+    "composite_score": 77.97068293816741,
+    "results": [
+      "SelectionResult(symbol='000002', rule_name='GoldenPit', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(77.97068293816741), confidence=0.7, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.34029850746268664), 'threshold': 0.2}, 'big_yang': {'met': np.True_, 'days': 1, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(6.99), 'ma_value': np.float64(6.627), 'margin': np.float64(0.05477591670439119)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.7478051049763), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(78.05970149253733), 'big_yang_score': np.int64(75), 'ma_breakout_score': np.float64(86.43277501131736), 'volume_score': np.float64(72.390255248815)}, 'final_score': np.float64(77.97068293816741), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 18, 879833))",
+      "SelectionResult(symbol='000002', rule_name='TrendBreakout', result=<RuleResult.FAIL: 'fail'>, score=np.float64(39.32339171902801), confidence=0.55, details={'conditions': {'bullish_trend': {'met': np.False_, 'strength': np.float64(0.0), 'days': 0, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 1, 'required_days': 2, 'avg_volume_ratio': np.float64(1.7478051049763), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(6.99), 'period_high': np.float64(7.22), 'breakout_strength': np.float64(-0.0318559556786703), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 1, 'total_days': 3, 'avg_daily_return': np.float64(0.0225734659581233), 'cumulative_return': np.float64(0.06554878048780499), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(0.0), 'volume_score': 40, 'breakout_score': np.float64(34.07202216066485), 'price_trend_score': np.float64(63.221544715447166), 'rsi_bonus': 5}, 'base_score': np.float64(34.32339171902801), 'final_score': np.float64(39.32339171902801), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 18, 880820))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 6.99,
+        "trigger_date": "2025-08-26",
+        "previous_high": 7.22,
+        "max_drawdown": "-3.2%",
+        "big_yang_gain": "-2.4%",
+        "ma10": 6.63
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 77.97068293816741,
+      "TrendBreakout": 39.32339171902801
+    }
+  },
+  {
+    "symbol": "000021",
+    "stock_name": "深科技",
+    "composite_score": 75.48343630095967,
+    "results": [
+      "SelectionResult(symbol='000021', rule_name='GoldenPit', result=<RuleResult.FAIL: 'fail'>, score=np.float64(49.214056823194156), confidence=0.5, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.3043302306758397), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(21.77), 'ma_value': np.float64(20.414), 'margin': np.float64(0.0664250024492994)}, 'volume_expansion': {'met': np.False_, 'ratio': np.float64(1.1720371137416126), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(70.86604613516793), 'big_yang_score': 0, 'ma_breakout_score': np.float64(89.92750073478982), 'volume_score': np.float64(36.06268042281884)}, 'final_score': np.float64(49.214056823194156), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 905932))",
+      "SelectionResult(symbol='000021', rule_name='TrendBreakout', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(75.48343630095967), confidence=0.75, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.True_, 'days': 2, 'required_days': 2, 'avg_volume_ratio': np.float64(1.1720371137416126), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(21.77), 'period_high': np.float64(21.98), 'breakout_strength': np.float64(-0.009554140127388573), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 2, 'total_days': 3, 'avg_daily_return': np.float64(0.019734782660078554), 'cumulative_return': np.float64(0.05936739659367385), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': np.float64(67.44074227483225), 'breakout_score': np.float64(45.222929936305725), 'price_trend_score': np.float64(69.27007299270072), 'rsi_bonus': 5}, 'base_score': np.float64(70.48343630095967), 'final_score': np.float64(75.48343630095967), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 906206))"
+    ],
+    "rule_data": {
+      "TrendBreakout": {
+        "current_price": 21.77,
+        "trigger_date": "2025-08-26",
+        "previous_high": 21.88,
+        "breakout_margin": "-0.5%",
+        "volume_days": "3天",
+        "avg_volume_ratio": 1.12
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 49.214056823194156,
+      "TrendBreakout": 75.48343630095967
+    }
+  },
+  {
+    "symbol": "000048",
+    "stock_name": "京基智农",
+    "composite_score": 73.48934554460575,
+    "results": [
+      "SelectionResult(symbol='000048', rule_name='GoldenPit', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(73.48934554460575), confidence=0.7, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.27521008403361336), 'threshold': 0.2}, 'big_yang': {'met': np.True_, 'days': 1, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(17.05), 'ma_value': np.float64(16.119999999999997), 'margin': np.float64(0.057692307692307904)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.6321534612801596), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(65.04201680672267), 'big_yang_score': np.int64(75), 'ma_breakout_score': np.float64(87.30769230769238), 'volume_score': np.float64(66.60767306400797)}, 'final_score': np.float64(73.48934554460575), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 484054))",
+      "SelectionResult(symbol='000048', rule_name='TrendBreakout', result=<RuleResult.FAIL: 'fail'>, score=np.float64(58.415578749483984), confidence=0.55, details={'conditions': {'bullish_trend': {'met': np.False_, 'strength': np.float64(0.3333333333333333), 'days': 1, 'total_days': 3}, 'volume_expansion': {'met': np.True_, 'days': 3, 'required_days': 2, 'avg_volume_ratio': np.float64(1.6321534612801596), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(17.05), 'period_high': np.float64(17.37), 'breakout_strength': np.float64(-0.018422567645365588), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 2, 'total_days': 3, 'avg_daily_return': np.float64(0.020775967726125593), 'cumulative_return': np.float64(0.06230529595015555), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(16.666666666666664), 'volume_score': np.float64(86.64306922560318), 'breakout_score': np.float64(40.78871617731722), 'price_trend_score': np.float64(69.56386292834888), 'rsi_bonus': 5}, 'base_score': np.float64(53.415578749483984), 'final_score': np.float64(58.415578749483984), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 484531))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 17.05,
+        "trigger_date": "2025-08-26",
+        "previous_high": 17.37,
+        "max_drawdown": "-1.8%",
+        "big_yang_gain": "6.2%",
+        "ma10": 16.12
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 73.48934554460575,
+      "TrendBreakout": 58.415578749483984
+    }
+  },
+  {
+    "symbol": "000050",
+    "stock_name": "深天马Ａ",
+    "composite_score": 71.73478836433728,
+    "results": [
+      "SelectionResult(symbol='000050', rule_name='GoldenPit', result=<RuleResult.FAIL: 'fail'>, score=np.float64(43.99777433789602), confidence=0.5, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.24115755627009647), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(10.02), 'ma_value': np.float64(9.691), 'margin': np.float64(0.033949024868434506)}, 'volume_expansion': {'met': np.False_, 'ratio': np.float64(1.2211835557036188), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(58.231511254019296), 'big_yang_score': 0, 'ma_breakout_score': np.float64(80.18470746053035), 'volume_score': np.float64(37.57487863703442)}, 'final_score': np.float64(43.99777433789602), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 532352))",
+      "SelectionResult(symbol='000050', rule_name='TrendBreakout', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(71.73478836433728), confidence=0.75, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 1, 'required_days': 2, 'avg_volume_ratio': np.float64(1.2211835557036188), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(10.02), 'period_high': np.float64(10.17), 'breakout_strength': np.float64(-0.01474926253687319), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 2, 'total_days': 3, 'avg_daily_return': np.float64(0.011319885579062938), 'cumulative_return': np.float64(0.034055727554179516), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': np.float64(37.57487863703442), 'breakout_score': np.float64(42.62536873156342), 'price_trend_score': np.float64(66.73890608875128), 'rsi_bonus': 10}, 'base_score': np.float64(61.73478836433728), 'final_score': np.float64(71.73478836433728), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 532637))"
+    ],
+    "rule_data": {
+      "TrendBreakout": {
+        "current_price": 10.02,
+        "trigger_date": "2025-08-26",
+        "previous_high": 10.01,
+        "breakout_margin": "+0.1%",
+        "volume_days": "3天",
+        "avg_volume_ratio": 1.16
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 43.99777433789602,
+      "TrendBreakout": 71.73478836433728
+    }
+  },
+  {
+    "symbol": "000029",
+    "stock_name": "深深房Ａ",
+    "composite_score": 71.15053718735678,
+    "results": [
+      "SelectionResult(symbol='000029', rule_name='GoldenPit', result=<RuleResult.FAIL: 'fail'>, score=np.float64(50.903713494371814), confidence=0.5, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.28146214099216704), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(33.08), 'ma_value': np.float64(26.092000000000002), 'margin': np.float64(0.26782155449946327)}, 'volume_expansion': {'met': np.False_, 'ratio': np.float64(1.2129788378192503), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(66.29242819843341), 'big_yang_score': 0, 'ma_breakout_score': 100, 'volume_score': np.float64(37.32242577905386)}, 'final_score': np.float64(50.903713494371814), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 80338))",
+      "SelectionResult(symbol='000029', rule_name='TrendBreakout', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(71.15053718735678), confidence=0.75, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 0, 'required_days': 2, 'avg_volume_ratio': np.float64(1.2129788378192503), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(33.08), 'period_high': np.float64(33.08), 'breakout_strength': np.float64(0.0), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 3, 'total_days': 3, 'avg_daily_return': np.float64(0.08387614887380808), 'cumulative_return': np.float64(0.2727972297037322), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': np.float64(37.32242577905386), 'breakout_score': np.float64(49.999999999999986), 'price_trend_score': np.float64(97.27972297037323), 'rsi_bonus': 0}, 'base_score': np.float64(71.15053718735678), 'final_score': np.float64(71.15053718735678), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 80637))"
+    ],
+    "rule_data": {
+      "TrendBreakout": {
+        "current_price": 33.08,
+        "trigger_date": "2025-08-26",
+        "previous_high": 30.13,
+        "breakout_margin": "+9.8%",
+        "volume_days": "3天",
+        "avg_volume_ratio": 1.15
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 50.903713494371814,
+      "TrendBreakout": 71.15053718735678
+    }
+  },
+  {
+    "symbol": "000032",
+    "stock_name": "深桑达Ａ",
+    "composite_score": 69.40647061720661,
+    "results": [
+      "SelectionResult(symbol='000032', rule_name='GoldenPit', result=<RuleResult.FAIL: 'fail'>, score=np.float64(53.26552777824361), confidence=0.5, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.4252461951656221), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(25.49), 'ma_value': np.float64(24.637), 'margin': np.float64(0.03462272192231189)}, 'volume_expansion': {'met': np.False_, 'ratio': np.float64(1.2228468038525848), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(95.04923903312442), 'big_yang_score': 0, 'ma_breakout_score': np.float64(80.38681657669356), 'volume_score': np.float64(37.62605550315645)}, 'final_score': np.float64(53.26552777824361), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 155129))",
+      "SelectionResult(symbol='000032', rule_name='TrendBreakout', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(69.40647061720661), confidence=0.75, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 1, 'required_days': 2, 'avg_volume_ratio': np.float64(1.2228468038525848), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(25.49), 'period_high': np.float64(26.88), 'breakout_strength': np.float64(-0.05171130952380955), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 3, 'total_days': 3, 'avg_daily_return': np.float64(0.019150728987590737), 'cumulative_return': np.float64(0.05855481727574752), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': np.float64(37.62605550315645), 'breakout_score': np.float64(24.144345238095223), 'price_trend_score': np.float64(75.85548172757476), 'rsi_bonus': 10}, 'base_score': np.float64(59.40647061720661), 'final_score': np.float64(69.40647061720661), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 155424))"
+    ],
+    "rule_data": {
+      "TrendBreakout": {
+        "current_price": 25.49,
+        "trigger_date": "2025-08-26",
+        "previous_high": 26.88,
+        "breakout_margin": "-5.2%",
+        "volume_days": "3天",
+        "avg_volume_ratio": 1.09
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 53.26552777824361,
+      "TrendBreakout": 69.40647061720661
+    }
+  },
+  {
+    "symbol": "000031",
+    "stock_name": "大悦城",
+    "composite_score": 67.65305378502853,
+    "results": [
+      "SelectionResult(symbol='000031', rule_name='GoldenPit', result=<RuleResult.FAIL: 'fail'>, score=np.float64(50.66951400853292), confidence=0.5, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.3767772511848341), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(3.35), 'ma_value': np.float64(3.225), 'margin': np.float64(0.03875968992248062)}, 'volume_expansion': {'met': np.False_, 'ratio': np.float64(1.1600777116636722), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(85.35545023696682), 'big_yang_score': 0, 'ma_breakout_score': np.float64(81.62790697674419), 'volume_score': np.float64(35.69469882042068)}, 'final_score': np.float64(50.66951400853292), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 129852))",
+      "SelectionResult(symbol='000031', rule_name='TrendBreakout', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(67.65305378502853), confidence=0.75, details={'conditions': {'bullish_trend': {'met': np.True_, 'strength': np.float64(1.0), 'days': 3, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 0, 'required_days': 2, 'avg_volume_ratio': np.float64(1.1600777116636722), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(3.35), 'period_high': np.float64(3.41), 'breakout_strength': np.float64(-0.01759530791788858), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 3, 'total_days': 3, 'avg_daily_return': np.float64(0.012293253005327317), 'cumulative_return': np.float64(0.037151702786377694), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(100.0), 'volume_score': np.float64(35.69469882042068), 'breakout_score': np.float64(41.20234604105571), 'price_trend_score': np.float64(73.71517027863777), 'rsi_bonus': 5}, 'base_score': np.float64(62.65305378502854), 'final_score': np.float64(67.65305378502853), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 130142))"
+    ],
+    "rule_data": {
+      "TrendBreakout": {
+        "current_price": 3.35,
+        "trigger_date": "2025-08-26",
+        "previous_high": 3.41,
+        "breakout_margin": "-1.8%",
+        "volume_days": "3天",
+        "avg_volume_ratio": 1.08
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 50.66951400853292,
+      "TrendBreakout": 67.65305378502853
+    }
+  },
+  {
+    "symbol": "000004",
+    "stock_name": "*ST国华",
+    "composite_score": 63.42898050292244,
+    "results": [
+      "SelectionResult(symbol='000004', rule_name='GoldenPit', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(63.42898050292244), confidence=0.7, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.532008830022075), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(10.75), 'ma_value': np.float64(9.707), 'margin': np.float64(0.10744823323374876)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.3743184402337951), 'threshold': 1.3}}, 'scores': {'drawdown_score': 100, 'big_yang_score': 0, 'ma_breakout_score': 100, 'volume_score': np.float64(53.715922011689756)}, 'final_score': np.float64(63.42898050292244), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 449794))",
+      "SelectionResult(symbol='000004', rule_name='TrendBreakout', result=<RuleResult.FAIL: 'fail'>, score=np.float64(57.65669718804562), confidence=0.55, details={'conditions': {'bullish_trend': {'met': np.False_, 'strength': np.float64(0.6666666666666666), 'days': 2, 'total_days': 3}, 'volume_expansion': {'met': np.True_, 'days': 2, 'required_days': 2, 'avg_volume_ratio': np.float64(1.3743184402337951), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(10.75), 'period_high': np.float64(10.75), 'breakout_strength': np.float64(0.0), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 3, 'total_days': 3, 'avg_daily_return': np.float64(0.019221404916655766), 'cumulative_return': np.float64(0.0580708661417324), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(33.33333333333333), 'volume_score': np.float64(71.4863688046759), 'breakout_score': np.float64(49.999999999999986), 'price_trend_score': np.float64(75.80708661417324), 'rsi_bonus': 0}, 'base_score': np.float64(57.65669718804562), 'final_score': np.float64(57.65669718804562), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 25, 450526))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 10.75,
+        "trigger_date": "2025-08-26",
+        "previous_high": 10.75,
+        "max_drawdown": "0.0%",
+        "big_yang_gain": "5.0%",
+        "ma10": 9.71
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-14 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 63.42898050292244,
+      "TrendBreakout": 57.65669718804562
+    }
+  },
+  {
+    "symbol": "000033",
+    "stock_name": "股票000033",
+    "composite_score": 62.78793497475581,
+    "results": [
+      "SelectionResult(symbol='000033', rule_name='GoldenPit', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(62.78793497475581), confidence=0.7, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.8454773869346734), 'threshold': 0.2}, 'big_yang': {'met': np.False_, 'days': 0, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(1.7), 'ma_value': np.float64(1.464), 'margin': np.float64(0.1612021857923497)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.3230347979804644), 'threshold': 1.3}}, 'scores': {'drawdown_score': 100, 'big_yang_score': 0, 'ma_breakout_score': 100, 'volume_score': np.float64(51.15173989902322)}, 'final_score': np.float64(62.78793497475581), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 181081))",
+      "SelectionResult(symbol='000033', rule_name='TrendBreakout', result=<RuleResult.FAIL: 'fail'>, score=np.float64(39.54954954954955), confidence=0.55, details={'conditions': {'bullish_trend': {'met': np.False_, 'strength': np.float64(0.0), 'days': 0, 'total_days': 3}, 'volume_expansion': {'met': np.False_, 'days': 0, 'required_days': 2, 'avg_volume_ratio': np.float64(1.3230347979804644), 'threshold': 1.3}, 'high_breakout': {'met': np.False_, 'current_price': np.float64(1.7), 'period_high': np.float64(7.96), 'breakout_strength': np.float64(-0.7864321608040201), 'required_margin': 0.01}, 'price_trend': {'met': np.True_, 'positive_days': 2, 'total_days': 3, 'avg_daily_return': np.float64(0.048098712209141636), 'cumulative_return': np.float64(0.14864864864864868), 'required_return': 0.02}}, 'scores': {'trend_score': np.float64(0.0), 'volume_score': 40, 'breakout_score': 0, 'price_trend_score': np.float64(78.1981981981982), 'rsi_bonus': 10}, 'base_score': np.float64(29.54954954954955), 'final_score': np.float64(39.54954954954955), 'thresholds': {'min_score': 65.0, 'high_score': 88.0}, 'rule_description': '趋势突破：多头趋势中放量突破前期高点'}, timestamp=datetime.datetime(2025, 8, 26, 15, 18, 26, 181559))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 1.7,
+        "trigger_date": "2017-07-06",
+        "previous_high": 7.96,
+        "max_drawdown": "-78.6%",
+        "big_yang_gain": "4.3%",
+        "ma10": 1.46
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2013-09-26 to 2017-07-06",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 62.78793497475581,
+      "TrendBreakout": 39.54954954954955
+    }
+  }
+]

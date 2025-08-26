@@ -1,0 +1,28 @@
+[
+  {
+    "symbol": "000002",
+    "stock_name": "万  科Ａ",
+    "composite_score": 77.92088259282328,
+    "results": [
+      "SelectionResult(symbol='000002', rule_name='GoldenPit', result=<RuleResult.PARTIAL: 'partial'>, score=np.float64(77.92088259282328), confidence=0.7, details={'conditions': {'drawdown': {'met': np.True_, 'value': np.float64(0.34029850746268664), 'threshold': 0.2}, 'big_yang': {'met': np.True_, 'days': 1, 'recent_days': 3}, 'ma_breakout': {'met': np.True_, 'price': np.float64(6.99), 'ma_value': np.float64(6.627), 'margin': np.float64(0.05477591670439119)}, 'volume_expansion': {'met': np.True_, 'ratio': np.float64(1.7438210773487686), 'threshold': 1.3}}, 'scores': {'drawdown_score': np.float64(78.05970149253733), 'big_yang_score': np.int64(75), 'ma_breakout_score': np.float64(86.43277501131736), 'volume_score': np.float64(72.19105386743843)}, 'final_score': np.float64(77.92088259282328), 'thresholds': {'min_score': 60.0, 'high_score': 85.0}, 'rule_description': '黄金坑：深度回撤后出现大阳线突破均线放量'}, timestamp=datetime.datetime(2025, 8, 26, 14, 58, 59, 928904))"
+    ],
+    "rule_data": {
+      "GoldenPit": {
+        "current_price": 6.99,
+        "trigger_date": "2025-08-26",
+        "previous_high": 7.22,
+        "max_drawdown": "-3.2%",
+        "big_yang_gain": "-2.4%",
+        "ma10": 6.63
+      }
+    },
+    "data_info": {
+      "data_length": 250,
+      "date_range": "2024-08-15 to 2025-08-26",
+      "indicators_count": 30
+    },
+    "score_details": {
+      "GoldenPit": 77.92088259282328
+    }
+  }
+]
