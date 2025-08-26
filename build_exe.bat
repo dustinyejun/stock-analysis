@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 > nul 2>&1
 REM A股选股系统 EXE打包脚本
 REM 在Windows环境下运行此脚本进行打包
 
