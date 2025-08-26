@@ -363,7 +363,28 @@ class StockSelectionApp:
             
             # 显示完成信息
             progress_bar.progress(1.0)
-            status_text.text(f"{config['scan_mode']}扫描完成！找到 {len(results.get('results', []))} 只符合条件的股票")
+            final_count = len(results.get('results', []))
+            status_text.text(f"{config['scan_mode']}扫描完成！找到 {final_count} 只符合条件的股票")
+            
+            # 扫描完成后显示更新的状态摘要
+            with st.container():
+                st.success(f"✅ 扫描完成！共找到 {final_count} 只符合条件的股票")
+                
+                # 创建状态摘要
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("本次发现", f"{final_count}只", delta="符合条件")
+                with col2:
+                    current_time = st.session_state.last_scan_time.strftime("%H:%M:%S")
+                    st.metric("完成时间", current_time, delta="刚刚")
+                with col3:
+                    total_scanned = len(symbols)
+                    st.metric("扫描范围", f"{total_scanned}只", delta=config['scan_mode'])
+            
+            # 在扫描完成2秒后刷新页面以更新状态栏
+            import time
+            time.sleep(2)
+            st.rerun()
             
         except Exception as e:
             st.session_state.scan_running = False
@@ -371,9 +392,8 @@ class StockSelectionApp:
             # 只更新状态文本，不创建新的UI组件
             status_text.text(f"扫描失败: {str(e)}")
             progress_bar.progress(0)
-    
+            st.error(f"扫描过程中发生错误: {str(e)}")
 
-    
     def render_results(self):
         """渲染扫描结果"""
         if not st.session_state.scan_results:
@@ -821,47 +841,56 @@ class StockSelectionApp:
         with main_tabs[1]:
             st.subheader("🔍 股票扫描")
             
-            if st.session_state.scan_running:
-                # 扫描进行中，只显示进度
-                st.info(f"🔄 正在扫描 {st.session_state.last_scan_config['scan_mode']}，请耐心等待...")
+            # 扫描准备状态或完成状态  
+            if hasattr(st.session_state, 'scan_results') and st.session_state.scan_results:
+                # 扫描已完成，显示结果和重新扫描按钮
+                results_count = len(st.session_state.scan_results.get('results', []))
+                st.success(f"✅ {st.session_state.last_scan_config.get('scan_mode', '扫描')}完成！找到 {results_count} 只符合条件的股票")
                 
-                # 创建进度显示区域
-                progress_bar = st.progress(0)
-                status_text = st.empty()
-                status_text.text("正在初始化扫描...")
-                
-                # 执行扫描
-                if not st.session_state.get('scan_started', False):
-                    st.session_state.scan_started = True
+                # 重新扫描按钮
+                if st.button("🔄 重新扫描", type="secondary", use_container_width=True, key="restart_scan"):
+                    # 清除之前的结果并设置新扫描状态
+                    st.session_state.scan_running = True
+                    st.session_state.scan_started = False
+                    st.session_state.scan_results = None
+                    
+                    # 立即显示重新扫描的反馈
+                    st.success("🔄 开始重新扫描...")
+                    
+                    # 创建进度显示区域
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+                    status_text.text("正在初始化扫描...")
+                    
+                    # 立即执行扫描，不等待下次渲染
                     self.run_stock_scan_inline(st.session_state.last_scan_config, progress_bar, status_text)
-                        
             else:
-                # 扫描准备状态或完成状态
-                if hasattr(st.session_state, 'scan_results') and st.session_state.scan_results:
-                    # 扫描已完成，显示结果和重新扫描按钮
-                    results_count = len(st.session_state.scan_results.get('results', []))
-                    st.success(f"✅ {st.session_state.last_scan_config.get('scan_mode', '扫描')}完成！找到 {results_count} 只符合条件的股票")
-                    
-                    # 重新扫描按钮
-                    if st.button("🔄 重新扫描", type="secondary", use_container_width=True, key="restart_scan"):
-                        st.session_state.scan_running = True
-                        st.session_state.scan_started = False
-                        st.session_state.scan_results = None
+                # 准备开始扫描
+                if hasattr(st.session_state, 'is_real_selector') and st.session_state.is_real_selector:
+                    st.info("🎯 真实数据模式 - 将获取实际股票数据进行分析")
+                    if config['scan_mode'] in ["深市主板", "全部板块"]:
+                        st.warning("⏰ 深市主板或全部板块扫描需要较长时间，请耐心等待")
                 else:
-                    # 准备开始扫描
-                    if hasattr(st.session_state, 'is_real_selector') and st.session_state.is_real_selector:
-                        st.info("🎯 真实数据模式 - 将获取实际股票数据进行分析")
-                        if config['scan_mode'] in ["深市主板", "全部板块"]:
-                            st.warning("⏰ 深市主板或全部板块扫描需要较长时间，请耐心等待")
-                    else:
-                        st.info("🎭 演示模式 - 使用模拟数据快速演示")
+                    st.info("🎭 演示模式 - 使用模拟数据快速演示")
+                
+                # 开始扫描按钮
+                if st.button("🚀 开始选股扫描", type="primary", use_container_width=True, key="start_scan_btn"):
+                    # 设置扫描状态和配置
+                    st.session_state.scan_running = True
+                    st.session_state.last_scan_config = config
+                    st.session_state.scan_progress = {'current': 0, 'total': 1, 'found': 0}
+                    st.session_state.scan_started = False
                     
-                    # 开始扫描按钮
-                    if st.button("🚀 开始选股扫描", type="primary", use_container_width=True, key="start_scan_btn"):
-                        st.session_state.scan_running = True
-                        st.session_state.last_scan_config = config
-                        st.session_state.scan_progress = {'current': 0, 'total': 1, 'found': 0}
-                        st.session_state.scan_started = False
+                    # 立即显示扫描开始的反馈
+                    st.success("🚀 开始扫描...")
+                    
+                    # 创建进度显示区域
+                    progress_bar = st.progress(0)
+                    status_text = st.empty()
+                    status_text.text("正在初始化扫描...")
+                    
+                    # 立即执行扫描，不等待下次渲染
+                    self.run_stock_scan_inline(config, progress_bar, status_text)
         
         with main_tabs[2]:
             self.render_results()
@@ -925,10 +954,10 @@ class MockStockSelector:
                 
                 stock_result = {
                     'symbol': symbol,
-                    'stock_name': f'模拟股票{symbol[-3:]}',  # 添加股票名称
+                    'stock_name': f'模拟股票{symbol[-3:]}',
                     'composite_score': composite_score,
                     'results': rule_results,
-                    'rule_data': rule_specific_data,  # 规则特定数据
+                    'rule_data': rule_specific_data,
                     'data_info': {
                         'data_length': random.randint(100, 250),
                         'date_range': '2024-01-01 to 2024-08-26',
@@ -953,8 +982,8 @@ class MockStockSelector:
             'results': qualified_results,
             'statistics': {
                 'total_symbols': total,
-                'qualified_stocks': len(results),  # 实际符合条件的总数
-                'returned_stocks': len(qualified_results),  # 返回的结果数
+                'qualified_stocks': len(results),
+                'returned_stocks': len(qualified_results),
                 'qualification_rate': len(results) / total * 100 if total > 0 else 0,
                 'total_processing_time': total * 0.1
             }
