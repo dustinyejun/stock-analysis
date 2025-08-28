@@ -208,9 +208,9 @@ class StockSelectionApp:
         )
         
         use_trend_breakout = st.sidebar.checkbox(
-            "趋势突破规则",
+            "趋势突破规则（升级版）",
             value=True,
-            help="识别多头趋势和放量突破"
+            help="多头趋势中连续倍量大震幅突破8个月高点（升级版）"
         )
         
         # 高级配置

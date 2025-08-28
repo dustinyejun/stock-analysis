@@ -393,6 +393,146 @@ class TechnicalIndicators:
             logging.getLogger(__name__).error(f"MACD计算失败: {str(e)}")
             raise CalculationException(f"MACD计算失败: {str(e)}", indicator="calculate_macd")
     
+    @staticmethod
+    def calculate_daily_amplitude(data: pd.DataFrame) -> pd.Series:
+        """
+        计算日内震幅（升级版趋势突破策略需要）
+        
+        震幅 = (最高价 - 最低价) / 前日收盘价 * 100%
+        
+        Args:
+            data: 包含OHLC数据的DataFrame
+            
+        Returns:
+            日内震幅序列
+        """
+        try:
+            if data.empty or not all(col in data.columns for col in ['high', 'low', 'close']):
+                raise CalculationException("数据缺少必需的OHLC字段", indicator="calculate_daily_amplitude")
+            
+            prev_close = data['close'].shift(1)
+            amplitude = (data['high'] - data['low']) / prev_close
+            return amplitude.fillna(0)
+        except Exception as e:
+            logging.getLogger(__name__).error(f"日内震幅计算失败: {str(e)}")
+            raise CalculationException(f"日内震幅计算失败: {str(e)}", indicator="calculate_daily_amplitude")
+    
+    @staticmethod
+    def check_consecutive_amplitude(data: pd.DataFrame, threshold: float = 0.07, days: int = 2) -> pd.Series:
+        """
+        检查连续震幅大于阈值的天数
+        
+        Args:
+            data: 股票数据
+            threshold: 震幅阈值（默认7%）
+            days: 连续天数要求
+            
+        Returns:
+            连续震幅满足条件的布尔序列
+        """
+        try:
+            amplitude = TechnicalIndicators.calculate_daily_amplitude(data)
+            amplitude_condition = amplitude > threshold
+            
+            # 计算连续满足条件的天数
+            consecutive = amplitude_condition.rolling(window=days, min_periods=1).sum()
+            return consecutive >= days
+        except Exception as e:
+            logging.getLogger(__name__).error(f"连续震幅检查失败: {str(e)}")
+            raise CalculationException(f"连续震幅检查失败: {str(e)}", indicator="check_consecutive_amplitude")
+    
+    @staticmethod
+    def calculate_ma_bullish_alignment(data: pd.DataFrame, periods: List[int] = [5, 10, 20, 60]) -> pd.Series:
+        """
+        判断多均线多头排列（升级版趋势突破策略需要）
+        
+        条件：MA5 > MA10 > MA20 > MA60 且股价 > MA5
+        
+        Args:
+            data: 股票数据
+            periods: 均线周期列表
+            
+        Returns:
+            多头排列确认的布尔序列
+        """
+        try:
+            if data.empty or 'close' not in data.columns:
+                raise CalculationException("数据缺少收盘价字段", indicator="calculate_ma_bullish_alignment")
+            
+            # 计算各周期均线
+            mas = {}
+            for period in periods:
+                mas[f'ma{period}'] = TechnicalIndicators.moving_average(data['close'], period)
+            
+            # 检查均线多头排列：短期均线 > 长期均线
+            alignment_condition = pd.Series(True, index=data.index)
+            for i in range(len(periods) - 1):
+                condition = mas[f'ma{periods[i]}'] > mas[f'ma{periods[i+1]}']
+                alignment_condition = alignment_condition & condition
+            
+            # 股价位置确认：股价 > 最短期均线
+            price_condition = data['close'] > mas[f'ma{periods[0]}']
+            
+            return alignment_condition & price_condition
+        except Exception as e:
+            logging.getLogger(__name__).error(f"多头排列判断失败: {str(e)}")
+            raise CalculationException(f"多头排列判断失败: {str(e)}", indicator="calculate_ma_bullish_alignment")
+    
+    @staticmethod 
+    def check_consecutive_volume_expansion(data: pd.DataFrame, ratio: float = 2.0, days: int = 2) -> pd.Series:
+        """
+        检查连续倍量（每天都大于指定倍数的五日均量）
+        
+        Args:
+            data: 股票数据
+            ratio: 量比倍数（默认2倍）
+            days: 连续天数要求
+            
+        Returns:
+            连续倍量确认的布尔序列
+        """
+        try:
+            if data.empty or 'volume' not in data.columns:
+                raise CalculationException("数据缺少成交量字段", indicator="check_consecutive_volume_expansion")
+            
+            # 计算5日成交量均值
+            volume_ma5 = data['volume'].rolling(window=5, min_periods=1).mean()
+            volume_ratio = data['volume'] / volume_ma5
+            volume_condition = volume_ratio > ratio
+            
+            # 连续days天都满足倍量条件
+            consecutive = volume_condition.rolling(window=days, min_periods=1).sum()
+            return consecutive >= days
+        except Exception as e:
+            logging.getLogger(__name__).error(f"连续倍量检查失败: {str(e)}")
+            raise CalculationException(f"连续倍量检查失败: {str(e)}", indicator="check_consecutive_volume_expansion")
+    
+    @staticmethod
+    def check_consecutive_yang_lines(data: pd.DataFrame, days: int = 2) -> pd.Series:
+        """
+        检查连续阳线
+        
+        Args:
+            data: 股票数据
+            days: 连续天数要求
+            
+        Returns:
+            连续阳线确认的布尔序列
+        """
+        try:
+            if data.empty or not all(col in data.columns for col in ['open', 'close']):
+                raise CalculationException("数据缺少开盘价或收盘价字段", indicator="check_consecutive_yang_lines")
+            
+            # 判断是否为阳线
+            yang_condition = data['close'] > data['open']
+            
+            # 连续days天都是阳线
+            consecutive = yang_condition.rolling(window=days, min_periods=1).sum()
+            return consecutive >= days
+        except Exception as e:
+            logging.getLogger(__name__).error(f"连续阳线检查失败: {str(e)}")
+            raise CalculationException(f"连续阳线检查失败: {str(e)}", indicator="check_consecutive_yang_lines")
+    
     def get_comprehensive_indicators(self, data: pd.DataFrame) -> pd.DataFrame:
         """
         计算综合技术指标
@@ -442,7 +582,14 @@ class TechnicalIndicators:
             result['dea'] = dea
             result['macd'] = macd
             
-            self.logger.info(f"成功计算综合技术指标，共 {len(result.columns)} 个指标")
+            # 升级版趋势突破策略新增指标
+            result['daily_amplitude'] = self.calculate_daily_amplitude(data)
+            result['consecutive_amplitude'] = self.check_consecutive_amplitude(data, threshold=0.07, days=2)
+            result['ma_bullish_alignment'] = self.calculate_ma_bullish_alignment(data, periods=[5, 10, 20, 60])
+            result['consecutive_volume_expansion'] = self.check_consecutive_volume_expansion(data, ratio=2.0, days=2)
+            result['consecutive_yang'] = self.check_consecutive_yang_lines(data, days=2)
+            
+            self.logger.info(f"成功计算综合技术指标（含升级版），共 {len(result.columns)} 个指标")
             
         except Exception as e:
             self.logger.error(f"计算综合技术指标失败: {str(e)}")

@@ -33,11 +33,17 @@ class SelectionConfig(BaseModel):
     # golden_pit_volume_ratio: 不再强制要求放量
     # golden_pit_big_yang_threshold: 不再要求大阳线
     
-    # 趋势突破策略参数
-    trend_breakout_yang_threshold: float = 0.03  # 大阳线涨幅阈值
-    trend_breakout_volume_ratio: float = 1.3  # 量比阈值
-    trend_breakout_consecutive_days: int = 2  # 连续天数要求
-    trend_breakout_lookback_days: int = 240  # 前期高点回望天数(8个月)
+    # 趋势突破策略参数（升级版）
+    trend_breakout_ma_periods: List[int] = [5, 10, 20, 60]    # 多均线周期
+    trend_breakout_volume_ratio: float = 2.0                  # 倍量标准（提高到2倍）
+    trend_breakout_amplitude_threshold: float = 0.07          # 日内震幅要求7%
+    trend_breakout_consecutive_days: int = 2                  # 连续天数要求
+    trend_breakout_lookback_days: int = 240                   # 8个月高点（240交易日）
+    trend_breakout_yang_required: bool = True                 # 必须阳线
+    trend_breakout_breakout_confirmation: float = 0.001       # 突破确认0.1%
+    
+    # 移除的旧参数（升级版不再使用）：
+    # trend_breakout_yang_threshold: 已整合到amplitude_threshold中
 
 class UIConfig(BaseModel):
     """界面配置"""
