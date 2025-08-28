@@ -26,11 +26,12 @@ class SelectionConfig(BaseModel):
     display_options: List[int] = [10, 20, 50, 100, 200]
     default_display_count: int = 20
     
-    # 黄金坑策略参数
-    golden_pit_decline_threshold: float = -0.20  # 跌幅阈值
-    golden_pit_volume_ratio: float = 1.5  # 量比阈值
-    golden_pit_big_yang_threshold: float = 0.05  # 大阳线涨幅阈值
-    golden_pit_lookback_days: int = 60  # 前期高点回望天数
+    # 黄金坑策略参数（简化版）
+    golden_pit_decline_threshold: float = -0.20  # 跌幅阈值（保留）
+    golden_pit_lookback_days: int = 60  # 前期高点回望天数（保留）
+    # 已移除的参数（新逻辑不再需要）：
+    # golden_pit_volume_ratio: 不再强制要求放量
+    # golden_pit_big_yang_threshold: 不再要求大阳线
     
     # 趋势突破策略参数
     trend_breakout_yang_threshold: float = 0.03  # 大阳线涨幅阈值

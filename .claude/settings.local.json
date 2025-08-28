@@ -30,7 +30,11 @@
       "mcp__serena__list_memories",
       "Bash(chmod:*)",
       "Bash(git remote add:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "mcp__serena__find_file",
+      "mcp__serena__delete_memory",
+      "mcp__serena__think_about_collected_information",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": []

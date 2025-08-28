@@ -204,7 +204,7 @@ class StockSelectionApp:
         use_golden_pit = st.sidebar.checkbox(
             "黄金坑规则",
             value=True,
-            help="检测深度回撤后的反转突破"
+            help="检测深度回调后重新站上均线的机会（简化版）"
         )
         
         use_trend_breakout = st.sidebar.checkbox(
@@ -649,7 +649,7 @@ class StockSelectionApp:
                 '触发日期': rule_data.get('trigger_date', ''),
                 '前期高点': rule_data.get('previous_high', 0),
                 '最大跌幅': rule_data.get('max_drawdown', ''),
-                '大阳线涨幅': rule_data.get('big_yang_gain', ''),
+                '突破幅度': rule_data.get('breakout_margin', ''),
                 '10日均线': rule_data.get('ma10', 0)
             }
             display_data.append(row)
@@ -667,7 +667,7 @@ class StockSelectionApp:
                     '触发日期': st.column_config.TextColumn(width="medium"),
                     '前期高点': st.column_config.NumberColumn(width="small", format="%.2f"),
                     '最大跌幅': st.column_config.TextColumn(width="small"),
-                    '大阳线涨幅': st.column_config.TextColumn(width="small"),
+                    '突破幅度': st.column_config.TextColumn(width="small"),
                     '10日均线': st.column_config.NumberColumn(width="small", format="%.2f")
                 }
             )
