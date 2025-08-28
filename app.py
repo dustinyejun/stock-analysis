@@ -569,7 +569,7 @@ class StockSelectionApp:
             for rule_result in result.get('results', []):
                 rule_name = rule_result.rule_name
                 if rule_name not in rule_stats:
-                    rule_stats[rule_name] = {'pass': 0, 'fail': 0, 'partial': 0, 'scores': []}
+                    rule_stats[rule_name] = {'pass': 0, 'fail': 0, 'partial': 0, 'error': 0, 'scores': []}
                 
                 rule_stats[rule_name][rule_result.result.name.lower()] += 1
                 rule_stats[rule_name]['scores'].append(rule_result.score)

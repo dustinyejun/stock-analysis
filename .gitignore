@@ -71,6 +71,7 @@ logs/
 *.log
 data/temp/
 temp/
+results/
 
 # Build artifacts
 build.spec

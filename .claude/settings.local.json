@@ -34,7 +34,8 @@
       "mcp__serena__find_file",
       "mcp__serena__delete_memory",
       "mcp__serena__think_about_collected_information",
-      "Bash(git log:*)"
+      "Bash(git log:*)",
+      "Bash(jobs)"
     ],
     "deny": [],
     "ask": []
